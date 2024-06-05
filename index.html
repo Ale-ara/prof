@@ -654,8 +654,7 @@
         }
       }
 
-   /* Estilos para a tela de carregamento */
-   #loading-screen {
+      #loading-screen {
       position: fixed;
       top: 0;
       left: 0;
@@ -675,6 +674,21 @@
     #loading-screen.hidden {
       opacity: 0;
       visibility: hidden;
+    }
+
+    /* Animação para o texto "Carregando..." */
+    @keyframes fadeInOut {
+      0%, 100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    /* Aplicar a animação ao texto */
+    #loading-screen span {
+      animation: fadeInOut 1s infinite;
     }
 
     /* Animação para o conteúdo */
@@ -763,7 +777,7 @@
 
   </head>
   <body>
-    <div id="loading-screen">Carregando...</div>
+    <div id="loading-screen">#SOBERANIAROXA</div>
 
 
     <div class="text_content" id="text_content">
@@ -780,7 +794,6 @@
 
                     <option value="entrada_postagem">Entrada de membros</option>
                     <option value="reintegração_membros">Reintegração de membros</option>
-                    <option value="grad_aprovado">Graduação</option>
                     <option value="licença_pedido">Pedido de licença ou reserva</option>
                     <option value="licença_retorno">Retorno de licença ou reserva</option>
                     <option value="mudança_cargo">Promoção ou rebaixamento</option>
@@ -958,7 +971,7 @@
                         </div>
                         <div class="check-box">
                             <input id="confirmar_saida" name="confirmar_saida" type="checkbox" value= null onchange="ValidaCheckBox('confirmar_saida')">     
-                                <label id="confirmar_saida_lb" for="confirmar_saida">Afirmo estar ciente de que, caso possua entre 14 e 30 dias no grupo, serei punido com 100 medalhas efetivas negativas por saída precoce.</label><br>
+                                <label id="confirmar_saida_lb" for="confirmar_saida">Afirmo estar ciente de que, caso possua entre 14 e 30 dias na companhia, serei punido com 100 medalhas efetivas negativas por saída precoce.</label><br>
                         </div>
                         <div class="button">
                             <input type="submit" id="enviar_saida" value="Enviar">
@@ -1433,7 +1446,7 @@ function fill_saida(e){
                 "[font=Lexend Deca][size=15][color=#560c7e][b]SAÍDA[/b][/color][/size]\n" + "\n" +
                 "[b]Nickname:[/b] " + $('#nickname_saída').val() + "\n" +
                 "[b]Permissão:[/b] " + $('#permissão_saída').val() + "\n" +
-                "\n[b]✓[/b] Afirmo estar ciente de que, caso possua entre 7 e 30 dias no grupo, serei punido com 100 medalhas efetivas negativas por saída precoce.[/font]";         
+                "\n[b]✓[/b] Afirmo estar ciente de que, caso possua entre 7 e 30 dias na companhia, serei punido com 100 medalhas efetivas negativas por saída precoce.[/font]";         
             $('#fa-generated-message').val(texto);
             send_data('saidas_honrosas');
         }else{alert('Preencha todos os campos!')}
@@ -1723,11 +1736,9 @@ showMenu('header-toggle','navbar');
       // Adiciona um atraso antes de remover a tela de carregamento
       setTimeout(() => {
         loadingScreen.classList.add('hidden');
-        document.body.style.opacity = '1'; // Garante que o corpo fique visível após o carregamento
       }, 2000); // 2000 milissegundos = 2 segundos de atraso
     });
   </script>
-
 
 
 
