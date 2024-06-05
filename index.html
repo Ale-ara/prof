@@ -15,7 +15,9 @@
       rel="stylesheet"
     />
     <style>
+
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
       /* ====== COISAS DA SIDEBAR */
       :root {
         --header-heigth: 3.5rem;
@@ -25,13 +27,14 @@
         --first-color-ligth:#821f88;
         --tittle-color: #e3e3e3;
         --text-color: #f9f6fd;
-        --text-color-ligth: #a5a1aa;
+        --text-color-ligth: #821f88;
         --body-color: #f9f6fd;
         --container-color: #000000;
         --content-color: #58555e;
         --tittle-background: #807e7e;
-        --textarea-background: #cccccc;
- 
+        --textarea-background: #cccccc ;
+       
+      
         --body-font: "Poppins", "sans-serif";
         --tittle-font-size: 2.4rem;
         --bigger-font-size: 1.4rem;
@@ -64,12 +67,14 @@
         font-family: var(--body-font);
       }
       body {
-        display: block;
-        margin: var(--header-heigth) 0 0 0;
-        font-size: var(--normal-font-size);
-        background-color: var(--textarea-background);
-        color: var(--content-color);
-      }
+  display: block;
+  margin: var(--header-heigth) 0 0 0;
+  font-size: var(--normal-font-size);
+  background-color: var(--textarea-background);
+ 
+  color: var(--content-color);
+}
+
       h3 {
         margin: 0;
       }
@@ -92,6 +97,7 @@
   max-width: 100px; /* Ajuste a largura da imagem conforme necessário */
   height: auto;
 }
+
       /* ======= HEADER ===========*/
      
       
@@ -647,6 +653,44 @@
           width: 31%;
         }
       }
+
+   /* Estilos para a tela de carregamento */
+   #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: purple;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2em;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    /* Esconder a tela de carregamento */
+    #loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    /* Animação para o conteúdo */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+
+
     </style>
 
 
@@ -715,6 +759,13 @@
         </a>
       </nav>
     </div>
+
+
+  </head>
+  <body>
+    <div id="loading-screen">Carregando...</div>
+
+
     <div class="text_content" id="text_content">
         <div class="container">
           <div class="main_tittle">
@@ -1664,5 +1715,21 @@ const showMenu = (headerToggle, navbarId) =>{
 }
 showMenu('header-toggle','navbar');
 </script>
+
+<script>
+    window.addEventListener('load', function() {
+      const loadingScreen = document.getElementById('loading-screen');
+      
+      // Adiciona um atraso antes de remover a tela de carregamento
+      setTimeout(() => {
+        loadingScreen.classList.add('hidden');
+        document.body.style.opacity = '1'; // Garante que o corpo fique visível após o carregamento
+      }, 2000); // 2000 milissegundos = 2 segundos de atraso
+    });
+  </script>
+
+
+
+
 </body>
 </html>
